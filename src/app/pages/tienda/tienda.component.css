@@ -1,0 +1,154 @@
+/* tienda.component.css */
+
+/* Estilos para los contenedores de productos */
+div.producto-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    display: flex;
+  align-items: center;
+  }
+  
+  /* Estilos para los nombres de productos */
+  div.producto-container p.nombre {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  /* Estilos para las descripciones de productos */
+  div.producto-container p.descripcion {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  /* Estilos para los precios de productos */
+  div.producto-container p.precio {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #007bff;
+  }
+  
+  /* Estilos para la paginación */
+  pagination-controls {
+    margin-top: 20px;
+  }
+  .pagination-controls {
+    position: relative;
+    left: 40%;
+    transform: translateX(-50%);
+  }
+
+  .imagen {
+    margin-right: 10px;
+    width: 150px;
+  }
+
+  .detalles {
+    flex: 1;
+  }
+  .boton-carrito {
+    margin-top:180px;
+    margin-right: 10px;
+    padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+  .boton-carrito button:hover {
+    background-color: #0056b3;
+  }
+  
+  .boton-carrito button:focus {
+    outline: none;
+  }
+  .carrito {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 60px;
+  }
+  h2 {
+    position: relative;
+    margin-bottom: 10px;
+    align-items: center;
+    color: #0056b3;
+    left: 43%;
+  }
+
+  .producto-car{
+    margin: 20px;
+  }
+  
+  .producto-car p{
+    font-size: 16px;
+  font-weight: bold;
+  color: #007bff;
+  }
+  .boton-comprar {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .botonComentario{
+    position: relative;
+    left: 7%;
+    bottom: 10px;
+    padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+  .dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: none;
+  }
+  
+  .dialog textarea {
+    width: 100%;
+    resize: none;
+    margin-bottom: 10px;
+  }
+  
+  .dialog button {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dialog button:hover {
+    background-color: #45a049;
+  }
+  .close-icon {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: red;
+  }
+  

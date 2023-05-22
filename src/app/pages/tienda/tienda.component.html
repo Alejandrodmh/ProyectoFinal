@@ -1,0 +1,34 @@
+<div class="producto-container" *ngFor="let producto of productos | paginate: { itemsPerPage: 4, currentPage: currentPage, totalItems: totalItems }">
+    <img src="{{producto.imagen}}" class="imagen" alt="producto">
+    <div class="detalles">
+        <p class="nombre">Nombre: {{producto.nombre}}</p>
+        <p class="descripcion">Descripción: {{producto.descripcion}}</p>
+        <p class="precio">Precio: {{producto.precio}}€</p>
+    </div>
+    <div #dialog class="dialog">
+      <span class="close-icon" (click)="closeDialog()">&times;</span>
+      <textarea #commentInput id="commentInput" rows="4" cols="50" placeholder="Ingrese su comentario"></textarea>
+      <button id="submitBtn" (click)="onCommentAdded(commentInput.value)">Enviar</button>
+    </div>
+    
+    
+<button (click)="openDialog(producto.id_producto)" class="botonComentario">Agregar Comentario</button>
+    <div >
+        <button class="boton-carrito" (click)="agregarAlCarrito(producto)">Añadir al carrito</button>
+      </div>
+  </div>
+  <h2>Carrito de compras</h2>
+  <div class="carrito">
+    
+    <div class="producto-car" *ngFor="let producto of carrito">
+      <p>{{producto.nombre}} - Cantidad: {{producto.cantidad}}</p>
+      <img src="{{producto.imagen}}" class="imagen" alt="producto">
+    </div>
+    <div>
+        <button class="boton-comprar" (click)="comprar()">Comprar</button>
+    </div>
+    
+  </div>
+  
+  <pagination-controls class="pagination-controls" (pageChange)="currentPage = $event"></pagination-controls>
+  
