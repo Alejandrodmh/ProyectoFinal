@@ -13,8 +13,7 @@ import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
-  declarations: [
-     RegistroComponent, PaginaInstalacionesComponent
+  declarations: [ PaginaInstalacionesComponent
   ],
   imports: [
     CommonModule,PagesRoutingModule,AppRoutingModule

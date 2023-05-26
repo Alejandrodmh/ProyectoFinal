@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { GlobalServiceService } from '../servicios/global-service.service';
+import { Usuario } from '../model/Usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -7,5 +10,6 @@ import { Component } from '@angular/core';
 })
 
 export class MainComponent {
+constructor(){}
 
 }

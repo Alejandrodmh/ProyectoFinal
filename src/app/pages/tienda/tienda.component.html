@@ -1,3 +1,4 @@
+<div class="contenedor">
 <div class="producto-container" *ngFor="let producto of productos | paginate: { itemsPerPage: 4, currentPage: currentPage, totalItems: totalItems }">
     <img src="{{producto.imagen}}" class="imagen" alt="producto">
     <div class="detalles">
@@ -6,7 +7,9 @@
         <p class="precio">Precio: {{producto.precio}}€</p>
     </div>
     <div #dialog class="dialog">
-      <span class="close-icon" (click)="closeDialog()">&times;</span>
+      <div class="dialog-header">
+        <span class="close-icon" (click)="closeDialog()">&times;</span>
+      </div>
       <textarea #commentInput id="commentInput" rows="4" cols="50" placeholder="Ingrese su comentario"></textarea>
       <button id="submitBtn" (click)="onCommentAdded(commentInput.value)">Enviar</button>
     </div>
@@ -31,4 +34,4 @@
   </div>
   
   <pagination-controls class="pagination-controls" (pageChange)="currentPage = $event"></pagination-controls>
-  
+</div>

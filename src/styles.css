@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url('./assets/fotos/patron.jpg'); /* Ruta de la imagen de textura */
+    background-repeat: repeat; /* Repetir la textura en ambas direcciones */
+    background-color: #f2f2f2; /* Color de fondo de respaldo */
+    color: #333; /* Color de texto */
+	font-family: Arial, sans-serif; /* Fuente */
+    margin: 0;
+  padding: 0;
+  }
+  

@@ -4,7 +4,8 @@ import { ComprasService } from 'src/app/servicios/compra.service';
 import { ProductosService } from 'src/app/servicios/productos.service';
 import { forkJoin ,Observable} from 'rxjs';
 import { ComentariosService } from 'src/app/servicios/comentario.service';
-import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
+import { GlobalServiceService } from 'src/app/servicios/global-service.service';
+import { Usuario } from 'src/app/model/Usuario';
 @Component({
   selector: 'app-tienda',
   templateUrl: './tienda.component.html',
@@ -14,7 +15,7 @@ export class TiendaComponent implements OnInit{
   @ViewChild('dialog') dialog!: ElementRef;
   @ViewChild('commentInput') commentInput!: ElementRef;
 selectedProductId: number | null = null;
-
+usuario: Usuario = new Usuario;
 openDialog(id_producto: number): void {
   this.selectedProductId = id_producto;
   const dialogElement = this.dialog.nativeElement as HTMLElement;
@@ -27,7 +28,7 @@ onCommentAdded(comment?: string): void {
   if (this.selectedProductId && comment) {
     console.log('Nuevo comentario:', comment);
     console.log('ID del producto:', this.selectedProductId);
-    this.comentariosService.comentar(this.selectedProductId, comment).subscribe(
+    this.comentariosService.comentar(this.selectedProductId, comment,this.usuario.id_usuario).subscribe(
       () => {
         console.log('Comentario agregado correctamente');
       },
@@ -54,12 +55,24 @@ closeDialog(): void {
   carrito: Producto[] = [];
 
   constructor(private productosService:ProductosService,private comprasService:ComprasService
-    ,private comentariosService:ComentariosService,private componentFactoryResolver: ComponentFactoryResolver){}
+    ,private comentariosService:ComentariosService,private globalService:GlobalServiceService){}
   ngOnInit(): void {
     this.productosService.getProductos().subscribe((productos:Producto[]) => {
       this.productos=productos; 
       this.totalItems = this.productos.length;
     })
+    this.globalService.getUsuarioSubject().subscribe((usuario: Usuario | null) => {
+      if (usuario) {
+        this.usuario=usuario;
+        // Aquí puedes hacer lo que necesites con el objeto 'usuario' retornado
+        console.log('Usuario cambiado en el global service:', usuario);
+        // ...
+      } else {
+        // Manejar el caso cuando el usuario sea null
+        console.log('El usuario es null');
+        // ...
+      }
+    });
   }
   agregarAlCarrito(producto: Producto): void {
     const productoExistente = this.carrito.find(p => p.nombre === producto.nombre);
@@ -80,7 +93,8 @@ closeDialog(): void {
     this.carrito.forEach(producto => {
       const id_producto = producto.id_producto;
       const cantidad = producto.cantidad;
-      const observable = this.comprasService.compra(id_producto, cantidad, id_compra);
+      const id_usuario = this.usuario.id_usuario;
+      const observable = this.comprasService.compra(id_producto, cantidad, id_compra,id_usuario);
       observables.push(observable);
     });
   

@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { SidebarModule } from 'primeng/sidebar';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { DialogComponent } from './shared/dialog/dialog.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     RegistroComponent,
     BarraNavegacionComponent,
     PaginaServiciosComponent,
-    DialogComponent
+    FooterComponent
     
   ],
   imports: [BrowserModule,AppRoutingModule,RouterModule,ButtonModule,DialogModule,FormsModule,SidebarModule,HttpClientModule,NgxPaginationModule

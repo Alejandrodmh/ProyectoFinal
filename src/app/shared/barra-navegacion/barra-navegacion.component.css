@@ -45,3 +45,7 @@ h1 {
 h1 a:visited{
     color: white;
 }
+
+i{
+	padding-left: 20px;
+}

@@ -1,10 +1,12 @@
 export class Usuario{
+    id_usuario:number
     nombre:string
-    correo:string
+    email:string
     contrasena:string
     constructor(){
+        this.id_usuario=0
         this.nombre=""
-        this.correo=""
+        this.email=""
         this.contrasena=""
     }
 }
