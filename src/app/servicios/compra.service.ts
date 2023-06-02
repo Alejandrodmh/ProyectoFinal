@@ -30,4 +30,5 @@ return this.httpClient.get<Compra[]>(`${this.baseUrl}Gym/GetCompras`,this.option
 
     return this.httpClient.put(url, body);
   }
+  
 }

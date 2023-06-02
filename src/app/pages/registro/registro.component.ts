@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/servicios/usuario.service';
 
 @Component({
@@ -7,7 +8,9 @@ import { UsuariosService } from 'src/app/servicios/usuario.service';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent {
-  constructor(private usuariosService:UsuariosService){}
+  error: boolean = false;
+  correoExistente: boolean = false;
+  constructor(private usuariosService:UsuariosService,private router:Router){}
 
    ngOnInit(): void {
     document.addEventListener('DOMContentLoaded', () => {
@@ -18,7 +21,8 @@ const form = document.getElementById('myForm') as HTMLFormElement;
 // Manejar el evento de envío del formulario
 form.addEventListener('submit', (event) => {
   event.preventDefault(); // Evitar el envío del formulario por defecto
-
+this.error=false
+this.correoExistente=false
   // Obtener los valores de los inputs
   const usernameInput = document.getElementById('username') as HTMLInputElement;
   const emailInput = document.getElementById('email') as HTMLInputElement;
@@ -34,20 +38,29 @@ form.addEventListener('submit', (event) => {
   this.usuariosService.getEmail(email).subscribe(
     (number:number) => {
       console.log('Numero retornado',number);
+      if(nombre && email && contrasena){
       if (number<1){
-        console.log("correo no registrado")
-        this.usuariosService.registro(nombre,email,contrasena).subscribe(
-          () => {
-            console.log('Usuario agregado correctamente');
-            usernameInput.value = '';
-            emailInput.value = '';
-            passwordInput.value = '';
-          },
-          (error) => {
-            console.error('Error al agregar el usuario', error);
-          }
-        );
-      }
+        console.log("correo no registrado en la bd")
+        
+          this.usuariosService.registro(nombre,email,contrasena).subscribe(
+            () => {
+              console.log('Usuario agregado correctamente');
+              usernameInput.value = '';
+              emailInput.value = '';
+              passwordInput.value = '';
+              this.router.navigateByUrl("main");
+            },
+            (error) => {
+              console.error('Error al agregar el usuario', error);
+            }
+          );
+        }else{
+          this.correoExistente=true;
+        }
+        }else{
+          this.error=true;
+        }
+        
     },
     (error) => {
       console.error('Error al verificar', error);

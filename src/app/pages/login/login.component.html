@@ -11,6 +11,7 @@
       <input type="text" id="email" name="email" required >
       <label for="contrasena">Contraseña:</label>
       <input type="password" id="contrasena" name="contrasena" required>
+      <p *ngIf="error" class="error">La cuenta introducida no existe,compruebala e intentelo de nuevo</p>
       <button type="submit">Iniciar sesión</button>
       <p class="register-link">¿No tienes cuenta? <a href="http://localhost:4200/registro">Regístrate aquí</a></p>
     </form>

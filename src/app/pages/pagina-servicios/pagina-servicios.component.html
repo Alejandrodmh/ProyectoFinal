@@ -1,50 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Servicios del Gimnasio</title>
-  </head>
-  <body>
-    <div class="container">
-      
 
-      <div class="services">
-        <div class="service-card">
-            <h1>Servicios del Gimnasio</h1>
-            <p>
-              A continuación se muestran los servicios que ofrecemos en nuestro
-              gimnasio.
-            </p>
-            <div class="container">
-              <h1 class="section-title">Nuestros Servicios</h1>
-          
-              <div class="services">
-                <div class="service">
-                  <img src="/assets/fotos/dieta.jpg" alt="Servicio 1">
-                  <h2>Plan de dieta</h2>
-                  <p>Corrige tu dieta en base a los objetivos que tengas.</p>
-                  <a href="#" class="btn btn-primary">Más información  <i class="fa-solid fa-circle-info fa-lg" style="color: #ffffff;"></i></a>
-                  
-                </div>
-                <div class="service">
-                  <img src="/assets/fotos/entrenamiento.jpg" alt="Servicio 2">
-                  <h2>Plan de entrenamiento</h2>
-                  <p>Adapta tus entrenamientos a las necesidades de tu cuerpo.</p>
-                  <a href="#" class="btn btn-primary">Más información  <i class="fa-solid fa-circle-info fa-lg" style="color: #ffffff;"></i></a>
-                </div>
-                <div class="service">
-                  <img src="/assets/fotos/grupo.jpg" alt="Servicio 3">
-                  <h2>Clases grupales</h2>
-                  <p>Acaba con la monotonia de los entrenamientos con divertidas clases grupales.</p>
-                  <a href="#" class="btn btn-primary">Más información  <i class="fa-solid fa-circle-info fa-lg" style="color: #ffffff;"></i></a>
-                </div>
-                <div class="service">
-                  <img src="/assets/fotos/fisio.jpg" alt="Servicio 4">
-                  <h2>Fisioterapia</h2>
-                  <p>Mejora tu postura corporal,evita lesiones y haz mas leve la fatiga muscular.</p>
-                  <a href="#" class="btn btn-primary">Más información  <i class="fa-solid fa-circle-info fa-lg" style="color: #ffffff;"></i></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios del Gimnasio</title>
+</head>
+
+  <div class="container">
+
+
+    <div class="services">
+      <div class="service-card">
+        <h1>Servicios del Gimnasio</h1>
+        <p>
+          A continuación se muestran los servicios que ofrecemos en nuestro
+          gimnasio a nuestros clientes y lo mejor de todo ¡Sin costes adicionales!.
+        </p>
+        <div class="container">
+          <h1 class="section-title">Nuestros Servicios</h1>
+
+          <div class="services">
+            <!-- Agrega un diálogo modal para el servicio -->
+            <div class="service">
+              <img src="/assets/fotos/dieta.jpg" alt="Servicio 1">
+              <h2>Plan de dieta</h2>
+              <p>Corrige tu dieta en base a los objetivos que tengas.</p>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dietaDialog">Más
+                información <i class="fa-solid fa-circle-info fa-lg" style="color: #ffffff;"></i></button>
+            </div>
+            
+            
+
+            <div class="service">
+              <img src="/assets/fotos/entrenamiento.jpg" alt="Servicio 2">
+              <h2>Plan de entrenamiento</h2>
+              <p>Adapta tus entrenamientos a las necesidades de tu cuerpo.</p>
+              <a class="btn" data-bs-toggle="modal" data-bs-target="#planDialog">Más información <i class="fa-solid fa-circle-info fa-lg" style="color: #ffffff;"></i></a>
+            </div>
+            <div class="service">
+              <img src="/assets/fotos/grupo.jpg" alt="Servicio 3">
+              <h2>Clases grupales</h2>
+              <p>Acaba con la monotonia de los entrenamientos con divertidas clases grupales.</p>
+              <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#clasesDialog">Más información <i class="fa-solid fa-circle-info fa-lg"
+                  style="color: #ffffff;"></i></a>
+            </div>
+            <div class="service">
+              <img src="/assets/fotos/fisio.jpg" alt="Servicio 4">
+              <h2>Fisioterapia</h2>
+              <p>Mejora tu postura corporal,evita lesiones y haz mas leve la fatiga muscular.</p>
+              <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fisioDialog">Más información <i class="fa-solid fa-circle-info fa-lg"
+                  style="color: #ffffff;"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="dietaDialog" tabindex="-1" aria-labelledby="ventana-informacion-label"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="ventana-informacion-label">Plan de dieta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                  </div>
+                  <div class="modal-body">
+                    
+                    <p>Realizamos dietas personalizadas</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
                 </div>
               </div>
             </div>
-          
+            <div class="modal fade" id="planDialog" tabindex="-1" aria-labelledby="ventana-informacion-label"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="ventana-informacion-label">Plan de entrenamiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                  </div>
+                  <div class="modal-body">
+                    
+                    <p>Forma tu plan de entrenamiento</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="clasesDialog" tabindex="-1" aria-labelledby="ventana-informacion-label"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="ventana-informacion-label">Clases grupales</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                  
+                  <p>Clases grupales en diferentes horarios opciones tanto de cardio como de fuerza</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="fisioDialog" tabindex="-1" aria-labelledby="ventana-informacion-label"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ventana-informacion-label">Fisioterapia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body">
+                
+                <p>Despues de tiempo de esfuerzo y sobrecarga en los musculos nuestro servicio de fisioterapia puede ayudar con los dolores y fatiga para asi evitar lesiones futuras</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public online: any;
   nombre: string = "";
   usuario: Usuario = new Usuario();
+  error: boolean = false;
 
   constructor(
     private router: Router,
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
             this.login(usuario);
           } else {
             console.log('El usuario no existe o los datos son incorrectos');
+            this.error=true;
           }
         },
         (error: any) => {

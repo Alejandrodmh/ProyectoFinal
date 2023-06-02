@@ -8,12 +8,24 @@ body {
 }
 
 header {
-	background-color: #3498db;
 	color: #fff;
 	padding: 20px;
+	padding-top: 50px;
 	text-align: center;
+	text-decoration: blink;
+	
   }
-  
+  .resaltar{
+	background-color: #174697;
+	padding-top: 1px;
+	padding-left: 50px;
+	padding-right: 50px;
+  }
+  p .resaltar{
+	padding-left: 83px;
+	padding-right: 83px;
+	padding-bottom: 20px;
+  }
   header h1, header p {
 	margin: 0;
   }
@@ -30,17 +42,18 @@ header {
 	justify-content: center;
 	align-items: flex-start;
 	margin-top: 20px;
+	margin-bottom: 60px;
   }
   
   .section {
 	width: 300px;
-	height: 300px;
+	height: 330px;
 	background-color: #3498db;
 	color: #fff;
-	padding: 20px;
 	text-align: center;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	margin-right: 40px;
+	padding-top: 10px;
   }
   .section:hover{
 	transform: translateY(-5px);

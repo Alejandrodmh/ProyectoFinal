@@ -20,18 +20,36 @@
         <button class="boton-carrito" (click)="agregarAlCarrito(producto)">Añadir al carrito</button>
       </div>
   </div>
-  <h2>Carrito de compras</h2>
-  <div class="carrito">
+  <h2 *ngIf="carrito.length > 0">Carrito de compras</h2>
+  <div class="carrito" *ngIf="carrito.length > 0">
     
     <div class="producto-car" *ngFor="let producto of carrito">
-      <p>{{producto.nombre}} - Cantidad: {{producto.cantidad}}</p>
+      <p>{{producto.nombre}} - Cantidad: {{producto.cantidad}}  <i class="fa-solid fa-xmark fa-lg" style="color: #000000;" (click)="eliminarProducto(producto)"></i></p>
       <img src="{{producto.imagen}}" class="imagen" alt="producto">
     </div>
-    <div>
-        <button class="boton-comprar" (click)="comprar()">Comprar</button>
+    <div class="compraContainer">
+      <p  class="precioTotal">Precio total: {{ precioTotal }}€</p>
+      <button class="boton-comprar" data-bs-toggle="modal" data-bs-target="#confirmDialog">Comprar</button>
     </div>
     
   </div>
   
   <pagination-controls class="pagination-controls" (pageChange)="currentPage = $event"></pagination-controls>
+</div>
+<div class="modal" id="confirmDialog" tabindex="-1" aria-labelledby="confirmDialogLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDialogLabel">Confirmar Compra</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de que deseas realizar la compra?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="hacerSolicitudes()">Comprar</button>
+      </div>
+    </div>
+  </div>
 </div>
