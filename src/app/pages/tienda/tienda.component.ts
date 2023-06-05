@@ -130,31 +130,4 @@ export class TiendaComponent implements OnInit {
         );
     });
   }
-  
-  
-  
-  
-  
-
-  comprar(): void {
-    const id_compra = Math.floor(Math.random() * 1000000);
-    const observables: Observable<any>[] = [];
-    this.carrito.forEach((producto) => {
-      const id_producto = producto.id_producto;
-      const cantidad = producto.cantidad;
-      const id_usuario = this.usuario.id_usuario;
-      const observable = this.comprasService.compra(id_producto, cantidad, id_compra, id_usuario);
-      observables.push(observable);
-    });
-
-    forkJoin(observables).subscribe(
-      () => {
-        console.log('Todas las compras se realizaron con éxito');
-        this.carrito = []; // Vaciar el carrito después de la compra
-      },
-      (error) => {
-        console.error('Error al realizar una o varias compras', error);
-      }
-    );
-  }
 }
