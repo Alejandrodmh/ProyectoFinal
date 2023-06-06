@@ -6,6 +6,7 @@ import { forkJoin, Observable } from 'rxjs';
 import { ComentariosService } from 'src/app/servicios/comentario.service';
 import { GlobalServiceService } from 'src/app/servicios/global-service.service';
 import { Usuario } from 'src/app/model/Usuario';
+import { Comentario } from 'src/app/model/Comentario';
 
 @Component({
   selector: 'app-tienda',
@@ -22,6 +23,9 @@ export class TiendaComponent implements OnInit {
   currentPage = 1;
   totalItems = 0;
   carrito: Producto[] = [];
+  productoActual:Producto=new Producto;
+  comentarios:Comentario[]=[];
+  comentariosVisible: boolean = false;
   openDialog(id_producto: number): void {
     this.selectedProductId = id_producto;
     const dialogElement = this.dialog.nativeElement as HTMLElement;
@@ -43,7 +47,6 @@ export class TiendaComponent implements OnInit {
       this.productos = productos;
       this.totalItems = this.productos.length;
     });
-
     this.globalService.getUsuarioSubject().subscribe((usuario: Usuario | null) => {
       if (usuario) {
         this.usuario = usuario;
@@ -51,6 +54,18 @@ export class TiendaComponent implements OnInit {
       } else {
         console.log('El usuario es null');
       }
+    });
+  }
+
+  getComentariosPorProducto(producto:Producto): Comentario[] {
+    return this.comentarios.filter((comentario) => comentario.id_producto === producto.id_producto);
+  }
+  verComentarios(producto:Producto){
+    this.productoActual=producto;
+    this.comentariosVisible=!this.comentariosVisible
+    this.comentariosService.getComentarios().subscribe((comentarios:Comentario[])=>{
+      this.comentarios=comentarios;
+      this.comentariosVisible=true;
     });
   }
   onCommentAdded(comment?: string): void {
@@ -84,6 +99,7 @@ export class TiendaComponent implements OnInit {
     this.precioTotal = this.calcularTotal();
   }
 
+
   calcularTotal(): number {
     const total = this.carrito.reduce((acumulador, producto) => acumulador + producto.precio * producto.cantidad, 0);
     return total;
@@ -98,6 +114,11 @@ export class TiendaComponent implements OnInit {
         this.carrito.splice(index, 1);
       }
     }
+    this.precioTotal = this.calcularTotal();
+  }
+
+  sumarProducto(producto:Producto){
+    producto.cantidad++
     this.precioTotal = this.calcularTotal();
   }
 

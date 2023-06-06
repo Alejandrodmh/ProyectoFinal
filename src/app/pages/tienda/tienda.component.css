@@ -11,25 +11,46 @@ div.producto-container {
   }
   
   /* Estilos para los nombres de productos */
-  div.producto-container p.nombre {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
+  .detalles {
+    flex: 1;
+    border: 1px solid #0056b3;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #94bfed;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 120px;
+    margin-right: 180px;
   }
   
-  /* Estilos para las descripciones de productos */
-  div.producto-container p.descripcion {
+  .detalles .nombre {
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 5px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .detalles .descripcion {
     font-size: 14px;
     margin-bottom: 5px;
+    margin-left: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
-  /* Estilos para los precios de productos */
-  div.producto-container p.precio {
+  .detalles .precio {
     font-size: 16px;
     margin-bottom: 5px;
     color: #007bff;
+    font-weight: bold;
+    margin-right: 20px;
+    text-align: right;
   }
-  
   /* Estilos para la paginación */
   .pagination-controls {
     position: absolute;
@@ -42,14 +63,10 @@ div.producto-container {
     margin-right: 10px;
     width: 150px;
   }
-
-  .detalles {
-    flex: 1;
-  }
   .boton-carrito {
     margin-top:180px;
     margin-right: 10px;
-    padding: 15px;
+    padding: 17px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -119,9 +136,21 @@ div.producto-container {
 
   .botonComentario{
     position: relative;
-    left: 140px;
-    bottom: 10px;
-    padding: 15px;
+    right: 20px;
+    top: 90px;
+    padding: 17px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+
+  .botonVerComentario{
+    position: relative;
+    right: 10px;
+    top: 90px;
+    padding: 17px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -184,4 +213,40 @@ div.producto-container {
     margin: 80px;
     background-color: #c5e1ff;
     border: solid #2874A6 5px;
+  }
+
+  .comentario{
+    border: 2px #0056b3 solid;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #94bfed;
+  }
+
+  .producto-agotado {
+    opacity: 0.5; /* Opacidad reducida para indicar que está fuera de stock */
+    pointer-events: none; /* Deshabilita los eventos de clic en el producto */
+  }
+
+  .modal-content{
+    background-color: #c5e1ff;
+  }
+
+  .modal-title{
+    color: #174697;
+    text-align: center;
+    position: relative;
+    left: 120px;
+  }
+  .btn-close{
+    background-color: gray;
+  }
+
+  .productoCarrito{
+    border: 2px #0056b3 solid;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #94bfed;
+  }
+  .sumar{
+    padding: 10px;
   }

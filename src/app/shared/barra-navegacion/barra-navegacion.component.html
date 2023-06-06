@@ -6,10 +6,10 @@
             <li (click)="Navserv()">Servicios</li>
             <li (click)="Navins()">Instalaciones</li>
             <li *ngIf="online">Bienvenido {{usuario.nombre}}</li>
-            <li *ngIf="online" (click)="Navtienda()"><i class="fa-brands fa-shopify fa-lg" style="color: #ffffff;"></i></li>
-            <li *ngIf="online" (click)="desloguear() "><i class="fa-solid fa-power-off fa-lg" style="color: #ffffff;"></i>
+            <li *ngIf="online" (click)="Navtienda()"><i class="fa-brands fa-shopify fa-lg" title="Tienda" style="color: #ffffff;"></i></li>
+            <li *ngIf="online" (click)="desloguear() "><i class="fa-solid fa-power-off fa-lg" title="Desloguear" style="color: #ffffff;"></i>
             </li>
-            <li *ngIf="online == false" (click)="Navlog()"><i class="fa-solid fa-right-to-bracket fa-xl" style="color: #ffffff;"></i>
+            <li *ngIf="online == false" (click)="Navlog()"><i class="fa-solid fa-right-to-bracket fa-xl" title="Loguear" style="color: #ffffff;"></i>
             </li>
         </ul>
     </nav>

@@ -1,11 +1,13 @@
 <div class="contenedor">
-<div class="producto-container" *ngFor="let producto of productos | paginate: { itemsPerPage: 4, currentPage: currentPage, totalItems: totalItems }">
+  <div class="producto-container" *ngFor="let producto of productos | paginate: { itemsPerPage: 4, currentPage: currentPage, totalItems: totalItems }">
     <img src="{{producto.imagen}}" class="imagen" alt="producto">
     <div class="detalles">
-        <p class="nombre">Nombre: {{producto.nombre}}</p>
-        <p class="descripcion">Descripción: {{producto.descripcion}}</p>
-        <p class="precio">Precio: {{producto.precio}}€</p>
+      <p class="nombre">{{producto.nombre}}</p>
+      <p class="descripcion">{{producto.descripcion}}</p>
+      <p class="precio">{{producto.precio}}€</p>
     </div>
+    <!-- Comentarios del producto -->
+    
     <div #dialog class="dialog">
       <div class="dialog-header">
         <span class="close-icon" (click)="closeDialog()">&times;</span>
@@ -13,29 +15,52 @@
       <textarea #commentInput id="commentInput" rows="4" cols="50" placeholder="Ingrese su comentario"></textarea>
       <button id="submitBtn" (click)="onCommentAdded(commentInput.value)">Enviar</button>
     </div>
-    
-    
-<button (click)="openDialog(producto.id_producto)" class="botonComentario">Agregar Comentario</button>
-    <div >
-        <button class="boton-carrito" (click)="agregarAlCarrito(producto)">Añadir al carrito</button>
+    <i (click)="openDialog(producto.id_producto)" title="Agregar comentario al producto" class="botonComentario fa-solid fa-comment-medical fa-xl"></i>
+    <i (click)="verComentarios(producto)" title="Ver comentarios" class="botonVerComentario fa-solid fa-comment fa-xl" data-bs-toggle="modal" data-bs-target="#comentarioDialog"></i>
+
+    <div class="modal" id="comentarioDialog"  tabindex="-1" aria-labelledby="comentarioDialogLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="comentarioDialogLabel">Comentarios {{this.productoActual.nombre}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div *ngIf="getComentariosPorProducto(this.productoActual).length > 0; else noComentarios">
+              <div *ngFor="let comentario of getComentariosPorProducto(this.productoActual)">
+                <p class="comentario">{{comentario.contenido}}</p>
+                <!-- Otros detalles del comentario -->
+              </div>
+            </div>
+            <ng-template #noComentarios>
+              <p>No hay comentarios</p>
+            </ng-template>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
       </div>
+    </div>
+    <div>
+      <i [ngClass]="{'producto-agotado': producto.cantidad === 0}" (click)="agregarAlCarrito(producto)" title="Agregar producto al carrito" class="boton-carrito fa-solid fa-cart-plus fa-xl"></i>
+    </div>
   </div>
+
   <h2 *ngIf="carrito.length > 0">Carrito de compras</h2>
   <div class="carrito" *ngIf="carrito.length > 0">
-    
     <div class="producto-car" *ngFor="let producto of carrito">
-      <p>{{producto.nombre}} - Cantidad: {{producto.cantidad}}  <i class="fa-solid fa-xmark fa-lg" style="color: #000000;" (click)="eliminarProducto(producto)"></i></p>
+      <p class="productoCarrito">{{producto.nombre}} - Cantidad: {{producto.cantidad}}<i class="fa-solid fa-plus fa-lg sumar" title="Sumar producto" style="color: #000000;" (click)="sumarProducto(producto)"></i>  <i class="fa-solid fa-xmark fa-lg" title="Eliminar producto" style="color: #000000;" (click)="eliminarProducto(producto)"></i></p>
       <img src="{{producto.imagen}}" class="imagen" alt="producto">
     </div>
     <div class="compraContainer">
       <p  class="precioTotal">Precio total: {{ precioTotal }}€</p>
       <button class="boton-comprar" data-bs-toggle="modal" data-bs-target="#confirmDialog">Comprar</button>
     </div>
-    
   </div>
-  
+
   <pagination-controls class="pagination-controls" (pageChange)="currentPage = $event"></pagination-controls>
 </div>
+
 <div class="modal" id="confirmDialog" tabindex="-1" aria-labelledby="confirmDialogLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
